@@ -11,11 +11,11 @@ script:
   - echo "logging into heroku registry"
   - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
   - echo "building image..."
-  - docker build -t "just-tech-news:latest" -f Dockerfile .
+  - docker build -t "just-tech-news:latest" -f Dockerfile.backend .
   - echo "tagging docker image..."
-  - docker tag "just-tech-news:latest" "mcereal/just-tech-news:latest"
+  - docker tag "just-tech-news:latest" "registry.heroku.com/just-tech-news:latest/backend"
   - echo "pushing to dockerhub registry..."
-  - docker push "mcereal/just-tech-news:latest"
+  - docker push "registry.heroku.com/just-tech-news:latest/backend"
 
 
 # deploy:
