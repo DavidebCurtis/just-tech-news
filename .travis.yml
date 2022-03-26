@@ -5,14 +5,11 @@ node_js:
 services:
   - docker
 
-# before_install:
-# - wget -qO- https://toolbelt.heroku.com/install.sh | sh #installed heroku CLI
-# - echo "logging into heroku registry"
-# - docker login -u "$HEROKU_USERNAME" --password=$(heroku auth:token) registry.heroku.com #logged in
+before_script:
+  - npm install
+  - npm run test
 
 script:
-  # - echo "logging into dockerhub..."
-  # - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - echo "logging into heroku registry"
   - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
   - echo "building image..."
@@ -21,15 +18,11 @@ script:
   - docker tag "just-tech-news-dcurtis" "registry.heroku.com/just-tech-news-dcurtis/web"
   - echo "pushing to dockerhub registry..."
   - docker push "registry.heroku.com/just-tech-news-dcurtis/web"
-  # - heroku container:push web --app just-tech-news-dcurtis
 
-# deploy:
-#   provider: script
-#   script:
-#     heroku container:release web --app just-tech-news-dcurtis
 deploy:
   provider: heroku
   api_key:
     secure: $HEROKU_API_KEY
   app: just-tech-news-dcurtis
+  
     
