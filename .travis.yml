@@ -7,6 +7,8 @@ services:
 
 before_script:
   - npm install
+  - echo "run linter"
+  - npm run lint
   - echo "run unit tests"
   - npm run test
 
