@@ -11,8 +11,8 @@ services:
 # - docker login -u "$HEROKU_USERNAME" --password=$(heroku auth:token) registry.heroku.com #logged in
 
 script:
-  - echo "logging into dockerhub..."
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  # - echo "logging into dockerhub..."
+  # - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - echo "logging into heroku registry"
   - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
   - echo "building image..."
