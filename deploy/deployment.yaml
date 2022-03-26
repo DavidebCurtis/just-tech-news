@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pomoduck-backend
+  name: just-tech-news
 spec:
   selector:
     matchLabels:
-      app: pomoduck-backend
+      app: just-tech-news
   template:
     metadata:
       labels:
-        app: pomoduck-backend
+        app: just-tech-news
     spec:
       containers:
-        - name: pomoduck-backend
+        - name: just-tech-news
           imagePullPolicy: Always
-          image: "registry.digitalocean.com/pomoduck/pomoduck-backend:v1.0.0-prod"
+          image: "registry.digitalocean.com/pomoduck/just-tech-news:v1.0.0-prod"
           ports:
             - containerPort: 3001
           env:
@@ -30,7 +30,7 @@ metadata:
   name: express-service
 spec:
   selector:
-    app: pomoduck-backend
+    app: just-tech-news
   type: LoadBalancer
   ports:
     - port: 3001
