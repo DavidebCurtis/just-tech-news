@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'just_tech_news_db'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'root'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - my-db:/var/lib/mysql
+  app:
+    build: ./
+    env_file: ./.env
+    environment:
+      DB_NAME: just_tech_news_db
+      DB_USER: root
+      DB_PASS: root
+      MYSQL_HOST: db
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    restart: on-failure
+# Names our volume
+volumes:
+  my-db:
