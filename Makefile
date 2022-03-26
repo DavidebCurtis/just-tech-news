@@ -1,8 +1,8 @@
 build:
-	docker build -t just-tech-news:v1.0.0 -f Dockerfile .
+	docker build -t just-tech-news:latest -f Dockerfile .
 
 tag:
-	docker tag just-tech-news:v1.0.0 mcereal/just-tech-news:v1.0.0
+	docker tag just-tech-news:latest mcereal/just-tech-news:latest
 
 push:
-	docker push mcereal/just-tech-news:v1.0.0
+	docker push mcereal/just-tech-news:latest
