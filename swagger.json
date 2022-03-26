@@ -1,0 +1,185 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://devops-ai-bot-post-processor.59b0587b.public.multi-containers.ibm.com/",
+      "description": "Deployed post processor"
+    },
+    {
+      "url": "http://localhost:8080",
+      "description": "local development"
+    }
+  ],
+  "info": {
+    "description": "post-processor api routes",
+    "version": "1.0.0",
+    "title": "post-processor api routes",
+    "contact": {
+      "email": "Michael.Curtis@ibm.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "Services",
+      "description": "Travis, Github, SonarQube api options"
+    }
+  ],
+  "paths": {
+    "/api/services/": {
+      "post": {
+        "tags": ["Services"],
+        "summary": "make api calls to Travis, Github, SonarQube",
+        "operationId": "settingsApi",
+        "description": "make api calls to Travis, Github, SonarQube",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "api call success"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "409": {
+            "description": "an existing variable already exists"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/GetEnvironmentVaribles"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateEnvironmentVariables"
+                  },
+                  {
+                    "$ref": "#/components/schemas/GetRepos"
+                  },
+                  {
+                    "$ref": "#/components/schemas/GetGitHubOrgMembers"
+                  }
+                ]
+              }
+            }
+          },
+          "description": "environment variable"
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "API-Key"
+      }
+    },
+    "schemas": {
+      "GetEnvironmentVaribles": {
+        "title": "Get Travis Environment Variables",
+        "description": "get a repos environment variables",
+        "type": "object",
+        "required": ["action", "org", "repoName"],
+        "properties": {
+          "action": {
+            "description": "the action builds the correct travis api call",
+            "type": "string",
+            "default": "getTravisEnvVars"
+          },
+          "org": {
+            "type": "string",
+            "example": "CIO-SETS"
+          },
+          "repoName": {
+            "type": "string",
+            "example": "DevOpsAiBot"
+          }
+        }
+      },
+      "CreateEnvironmentVariables": {
+        "title": "Create Travis Environment Variables",
+        "description": "create an environment variable",
+        "type": "object",
+        "required": [
+          "action",
+          "org",
+          "repoName",
+          "variableName",
+          "vaiableValue",
+          "variableVisibility"
+        ],
+        "properties": {
+          "action": {
+            "description": "the action builds the correct travis api call",
+            "type": "string",
+            "default": "postTravisEnvVars"
+          },
+          "org": {
+            "type": "string",
+            "example": "CIO-SETS"
+          },
+          "repoName": {
+            "type": "string",
+            "example": "DevOpsAiBot"
+          },
+          "variableName": {
+            "type": "string",
+            "example": "test123"
+          },
+          "vaiableValue": {
+            "type": "string",
+            "example": "test123"
+          },
+          "variableVisibility": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "GetRepos": {
+        "title": "Get Travis Repos",
+        "description": "Get repos in Travis",
+        "type": "object",
+        "required": ["action", "org"],
+        "properties": {
+          "action": {
+            "description": "the action builds the correct travis api call",
+            "type": "string",
+            "default": "getTravisRepos"
+          },
+          "org": {
+            "type": "string",
+            "example": "CIO-SETS"
+          }
+        }
+      },
+      "GetGitHubOrgMembers": {
+        "title": "Get GitHub org members",
+        "description": "Get GitHub org members",
+        "type": "object",
+        "required": ["action", "org"],
+        "properties": {
+          "action": {
+            "description": "the action builds the correct travis api call",
+            "type": "string",
+            "default": "getOrgMembers"
+          },
+          "org": {
+            "type": "string",
+            "example": "CIO-SETS"
+          }
+        }
+      }
+    }
+  }
+}

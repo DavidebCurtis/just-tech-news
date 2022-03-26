@@ -6,7 +6,7 @@ addons:
   sonarcloud:
     organization: "davidebcurtis"
     token:
-      secure: $SONAR_TOKEN # encrypted value of your token
+      secure: SONAR_TOKEN # encrypted value of your token
 
 services:
   - docker
