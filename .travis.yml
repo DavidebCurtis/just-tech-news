@@ -28,10 +28,15 @@ script:
   - echo "pushing to dockerhub registry..."
   - docker push "registry.heroku.com/just-tech-news-dcurtis/web"
 
+before_deploy: 
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+
 deploy:
   provider: heroku
   api_key:
     secure: $HEROKU_API_KEY
+  on:
+    all_branches: true
   app: just-tech-news-dcurtis
   
     
