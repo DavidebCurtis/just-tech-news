@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
       host: config[env].host,
       dialect: config[env].dialect,
       dialectOptions: {
-        socketPath: "/tmp/mysql.sock"
+        socketPath: process.env.MYSQL_SOCK
       },
       port: config[env].port
     }
