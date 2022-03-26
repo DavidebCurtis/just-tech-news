@@ -21,7 +21,7 @@ script:
   # - docker tag "just-tech-news-dbcurtis" "registry.heroku.com/just-tech-news-dbcurtis/web"
   # - echo "pushing to dockerhub registry..."
   # - docker push "registry.heroku.com/just-tech-news-dbcurtis/web"
-  - heroku container:push web
+  - heroku container:push web --app just-tech-news-dbcurtis
 
 deploy:
   provider: script
