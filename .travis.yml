@@ -6,8 +6,10 @@ services:
   - docker
 
 script:
-  - echo "logging into dockerhub..."
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  # - echo "logging into dockerhub..."
+  # - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - echo "logging into heroku registry"
+  - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
   - echo "building image..."
   - docker build -t "just-tech-news:latest" -f Dockerfile .
   - echo "tagging docker image..."
