@@ -1,0 +1,39 @@
+language: node_js
+node_js:
+  - 17
+
+addons:
+  sonarcloud:
+    organization: "davidebcurtis"
+
+services:
+  - docker
+
+before_script:
+  - npm install
+  - echo "run linter"
+  - npm run lint
+  - echo "run unit tests"
+  - npm run test
+  - echo "run sonar scan"
+  - sonar-scanner
+
+script:
+  - echo "logging into heroku registry"
+  - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+  - echo "building image..."
+  - docker build -t "just-tech-news-dcurtis" -f Dockerfile .
+  - echo "tagging docker image..."
+  - docker tag "just-tech-news-dcurtis" "registry.heroku.com/just-tech-news-dcurtis/web"
+  - echo "pushing to dockerhub registry..."
+  - docker push "registry.heroku.com/just-tech-news-dcurtis/web"
+
+before_deploy: 
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: just-tech-news-dcurtis
+  
+    

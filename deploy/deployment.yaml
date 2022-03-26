@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pomoduck-backend
+  name: just-tech-news
 spec:
   selector:
     matchLabels:
-      app: pomoduck-backend
+      app: just-tech-news
   template:
     metadata:
       labels:
-        app: pomoduck-backend
+        app: just-tech-news
     spec:
       containers:
-        - name: pomoduck-backend
+        - name: just-tech-news
           imagePullPolicy: Always
-          image: "registry.digitalocean.com/pomoduck/pomoduck-backend:v1.0.0-prod"
+          image: "mcereal/just-tech-news"
           ports:
-            - containerPort: 3001
+            - containerPort: 3301
           env:
             - name: DB_CONNECTION
               valueFrom:
@@ -27,18 +27,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: express-service
+  name: just-tech-news-service
 spec:
   selector:
-    app: pomoduck-backend
+    app: just-tech-news
   type: LoadBalancer
   ports:
-    - port: 3001
-      targetPort: 3001
+    - port: 3301
+      targetPort: 3301
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: express-configmap
-data:
-  EXPRESS_SERVICE: express-service.default.svc.cluster.local
+

@@ -22,12 +22,14 @@ services:
     build: ./
     env_file: ./.env
     environment:
-      DB_NAME: just_tech_news_db
-      DB_USER: root
-      DB_PASS: root
-      MYSQL_HOST: db
+      - DB_HOST=db
+      - DB_USER=$MYSQLDB_USER
+      - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - DB_NAME=$MYSQLDB_DATABASE
+      - DB_PORT=$MYSQLDB_DOCKER_PORT
+      - NODE_ENV=local
     ports:
-      - "3001:3001"
+      - $NODE_LOCAL_PORT:$PORT
     depends_on:
       - db
     restart: on-failure
