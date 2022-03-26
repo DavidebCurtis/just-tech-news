@@ -34,8 +34,6 @@ before_deploy:
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
-  on:
-    all_branches: true
   app: just-tech-news-dcurtis
   
     
