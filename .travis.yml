@@ -9,7 +9,7 @@ script:
   - echo "logging into dockerhub..."
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - echo "building image..."
-  - docker build -t just-tech-news:latest mcereal/just-tech-news:latest
+  - docker build -t just-tech-news:latest -f Dockerfile .
   - echo "tagging docker image..."
   - docker tag just-tech-news:latest mcereal/just-tech-news:latest
   - echo "pushing to dockerhub registry..."
