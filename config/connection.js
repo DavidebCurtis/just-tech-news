@@ -12,13 +12,13 @@ require("dotenv").config();
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
-  process.env.DB_PASS,
+  null,
   {
     host: "localhost",
     dialect: "mysql",
-    // dialectOptions: {
-    //   socketPath: "/tmp/mysql.sock",
-    // },
+    dialectOptions: {
+      socketPath: "/tmp/mysql.sock",
+    },
     port: 3306,
   }
 );
