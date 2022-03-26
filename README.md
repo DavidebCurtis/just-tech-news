@@ -1,4 +1,4 @@
-# just-tech-news [![Build Status](https://app.travis-ci.com/DavidebCurtis/just-tech-news.svg?branch=main)](https://app.travis-ci.com/DavidebCurtis/just-tech-news)
+# just-tech-news [![Build Status](https://app.travis-ci.com/DavidebCurtis/just-tech-news.svg?branch=main)](https://app.travis-ci.com/DavidebCurtis/just-tech-news) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=just-tech-news&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=just-tech-news)
 
 Point Of Contact: [DavidebCurtis](https://github.com/DavidebCurtis)
 
