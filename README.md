@@ -1,4 +1,4 @@
-# just-tech-news [![Build Status](https://app.travis-ci.com/mcereal/just-tech-news.svg?token=E7359nsbqcVWGQZsFzgN&branch=main)](https://app.travis-ci.com/mcereal/just-tech-news)
+# just-tech-news [![Build Status](https://app.travis-ci.com/DavidebCurtis/just-tech-news.svg?branch=main)](https://app.travis-ci.com/DavidebCurtis/just-tech-news)
 
 Point Of Contact: [DavidebCurtis](https://github.com/DavidebCurtis)
 
@@ -66,4 +66,4 @@ Slack - [DavidebCurtis](https://github.com/DavidebCurtis)
 ## Repo
 
 - [GitHub](https://github.com/DavidebCurtis/just-tech-news)(DavidebCurtis/just-tech-news)
-- [Travis](https://app.travis-ci.com/github/mcereal/just-tech-news)(DavidebCurtis/just-tech-news)
+- [Travis](https://app.travis-ci.com/github/DavidebCurtis/just-tech-news)(DavidebCurtis/just-tech-news)
