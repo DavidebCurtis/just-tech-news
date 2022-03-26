@@ -27,7 +27,7 @@ services:
       - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
       - DB_NAME=$MYSQLDB_DATABASE
       - DB_PORT=$MYSQLDB_DOCKER_PORT
-      - NODE_ENV=docker
+      - NODE_ENV=local
     ports:
       - $NODE_LOCAL_PORT:$PORT
     depends_on:
