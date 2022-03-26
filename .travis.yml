@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 17
+  - 16
 
 addons:
   sonarcloud:
@@ -34,6 +34,8 @@ before_deploy:
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
+  on:
+    branch: main
   app: just-tech-news-dcurtis
   
     
